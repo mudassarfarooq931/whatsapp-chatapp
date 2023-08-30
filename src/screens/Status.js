@@ -4,7 +4,7 @@ import React from 'react';
 const Status = () => {
   return (
     <View>
-      <Text>Status 1</Text>
+      <Text>Status</Text>
     </View>
   );
 };

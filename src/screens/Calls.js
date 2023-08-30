@@ -4,7 +4,7 @@ import React from 'react';
 const Calls = () => {
   return (
     <View>
-      <Text>Calls 1</Text>
+      <Text>Calls</Text>
     </View>
   );
 };
