@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {View, Text} from 'react-native';
+import React from 'react';
 
 const Status = () => {
   return (
     <View>
-      <Text>Status</Text>
+      <Text>Status 1</Text>
     </View>
-  )
-}
+  );
+};
 
-export default Status
+export default Status;
