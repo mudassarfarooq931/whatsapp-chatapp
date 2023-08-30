@@ -11,6 +11,7 @@ const Status = () => {
         backgroundColor: 'orange',
       }}>
       <Text style={{flex: 1}}>Status</Text>
+      <Text style={{flex: 1}}>Videos</Text>
     </View>
   );
 };
