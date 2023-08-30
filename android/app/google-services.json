@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "296592549884",
+    "project_id": "whatsappchatapp-42be5",
+    "storage_bucket": "whatsappchatapp-42be5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296592549884:android:3cfd85166ab5ffb735f479",
+        "android_client_info": {
+          "package_name": "com.chat_app_whatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296592549884-9s6hefhu40gavst2ntrsmt7fefc4kl52.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chat_app_whatsapp",
+            "certificate_hash": "ada3daf9c1c209770d7df25d8acd801e34484830"
+          }
+        },
+        {
+          "client_id": "296592549884-gu3qqetgu7bsh17nsgk6houepka0dtn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxqDDLq_qRlN0c1hBLSrvyrLwCH3ByQs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296592549884-gu3qqetgu7bsh17nsgk6houepka0dtn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296592549884:android:aa7e6cbbdb3694fb35f479",
+        "android_client_info": {
+          "package_name": "com.my_chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296592549884-gu3qqetgu7bsh17nsgk6houepka0dtn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxqDDLq_qRlN0c1hBLSrvyrLwCH3ByQs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296592549884-gu3qqetgu7bsh17nsgk6houepka0dtn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
