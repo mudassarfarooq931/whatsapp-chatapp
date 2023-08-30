@@ -3,7 +3,13 @@ import React from 'react';
 
 const Status = () => {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'orange',
+      }}>
       <Text style={{flex: 1}}>Status</Text>
     </View>
   );
