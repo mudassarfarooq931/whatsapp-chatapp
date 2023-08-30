@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {View, Text} from 'react-native';
+import React from 'react';
 
 const Status = () => {
   return (
-    <View>
-      <Text>Status</Text>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text style={{flex: 1}}>Status</Text>
     </View>
-  )
-}
+  );
+};
 
-export default Status
+export default Status;
