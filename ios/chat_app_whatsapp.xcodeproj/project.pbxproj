@@ -11,6 +11,8 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		13B2FE24877C8BD9BFCFD8BD /* libPods-chat_app_whatsapp-chat_app_whatsappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DCE1C723E1D52BEE6DD500 /* libPods-chat_app_whatsapp-chat_app_whatsappTests.a */; };
+		4F64AD8825CA3DF968E10E70 /* libPods-chat_app_whatsapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E53C46975E390E67E81AA7F9 /* libPods-chat_app_whatsapp.a */; };
 		522DE8082A97C4C200AF3B92 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522DE7F52A97C4C200AF3B92 /* Fontisto.ttf */; };
 		522DE8092A97C4C200AF3B92 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522DE7F62A97C4C200AF3B92 /* Octicons.ttf */; };
 		522DE80A2A97C4C200AF3B92 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522DE7F72A97C4C200AF3B92 /* Feather.ttf */; };
@@ -31,9 +33,7 @@
 		522DE8192A97C4C200AF3B92 /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522DE8062A97C4C200AF3B92 /* FontAwesome6_Brands.ttf */; };
 		522DE81A2A97C4C200AF3B92 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522DE8072A97C4C200AF3B92 /* MaterialIcons.ttf */; };
 		52E686962AA201CB00BD38BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52E686952AA201CB00BD38BA /* GoogleService-Info.plist */; };
-		6B8E40CEA8311BC2BE96E418 /* Pods_chat_app_whatsapp_chat_app_whatsappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D0FD8271C6AB3313776F4E /* Pods_chat_app_whatsapp_chat_app_whatsappTests.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		AA29D69B6D1BBBE06D767864 /* Pods_chat_app_whatsapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB62A36B02C8A2895092F96 /* Pods_chat_app_whatsapp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,6 @@
 		00E356EE1AD99517003FC87E /* chat_app_whatsappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chat_app_whatsappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* chat_app_whatsappTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chat_app_whatsappTests.m; sourceTree = "<group>"; };
-		02D0FD8271C6AB3313776F4E /* Pods_chat_app_whatsapp_chat_app_whatsappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chat_app_whatsapp_chat_app_whatsappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* chat_app_whatsapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chat_app_whatsapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = chat_app_whatsapp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = chat_app_whatsapp/AppDelegate.mm; sourceTree = "<group>"; };
@@ -80,9 +79,10 @@
 		52E686952AA201CB00BD38BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-chat_app_whatsapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat_app_whatsapp.release.xcconfig"; path = "Target Support Files/Pods-chat_app_whatsapp/Pods-chat_app_whatsapp.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-chat_app_whatsapp-chat_app_whatsappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat_app_whatsapp-chat_app_whatsappTests.debug.xcconfig"; path = "Target Support Files/Pods-chat_app_whatsapp-chat_app_whatsappTests/Pods-chat_app_whatsapp-chat_app_whatsappTests.debug.xcconfig"; sourceTree = "<group>"; };
+		75DCE1C723E1D52BEE6DD500 /* libPods-chat_app_whatsapp-chat_app_whatsappTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-chat_app_whatsapp-chat_app_whatsappTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = chat_app_whatsapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-chat_app_whatsapp-chat_app_whatsappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat_app_whatsapp-chat_app_whatsappTests.release.xcconfig"; path = "Target Support Files/Pods-chat_app_whatsapp-chat_app_whatsappTests/Pods-chat_app_whatsapp-chat_app_whatsappTests.release.xcconfig"; sourceTree = "<group>"; };
-		AAB62A36B02C8A2895092F96 /* Pods_chat_app_whatsapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chat_app_whatsapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E53C46975E390E67E81AA7F9 /* libPods-chat_app_whatsapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-chat_app_whatsapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -91,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B8E40CEA8311BC2BE96E418 /* Pods_chat_app_whatsapp_chat_app_whatsappTests.framework in Frameworks */,
+				13B2FE24877C8BD9BFCFD8BD /* libPods-chat_app_whatsapp-chat_app_whatsappTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA29D69B6D1BBBE06D767864 /* Pods_chat_app_whatsapp.framework in Frameworks */,
+				4F64AD8825CA3DF968E10E70 /* libPods-chat_app_whatsapp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				AAB62A36B02C8A2895092F96 /* Pods_chat_app_whatsapp.framework */,
-				02D0FD8271C6AB3313776F4E /* Pods_chat_app_whatsapp_chat_app_whatsappTests.framework */,
+				E53C46975E390E67E81AA7F9 /* libPods-chat_app_whatsapp.a */,
+				75DCE1C723E1D52BEE6DD500 /* libPods-chat_app_whatsapp-chat_app_whatsappTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
