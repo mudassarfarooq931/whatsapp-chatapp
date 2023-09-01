@@ -6,6 +6,7 @@ import {
   KeyboardAvoidingView,
   ActivityIndicator,
   Image,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import database from '@react-native-firebase/database';
@@ -14,6 +15,7 @@ import CustomButton from '../components/CustomButton';
 import auth from '@react-native-firebase/auth';
 import {useDispatch} from 'react-redux';
 import {setUserData} from '../redux/slices/auth/auth-slice';
+import axios from 'axios';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ const Login = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
+    const baseUrl = 'http://192.168.18.130:5000/api';
     let valid = true;
 
     if (email === '' || password === '') {
@@ -35,40 +38,51 @@ const Login = ({navigation}) => {
 
     if (valid) {
       setIsLoading(true);
-      auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(user => {
-          const userRef = database().ref(`users/${user?.user?.uid}`);
-          console.log('dataArray = ==', userRef);
-          userRef.once('value', snapshot => {
-            const data = {
-              email: snapshot.child('email').val(),
-              name: snapshot.child('name').val(),
-              profileImage: snapshot.child('profileImage').val(),
-              uid: snapshot.child('uid').val(),
-            };
-            dispatch(setUserData(data));
+      axios({
+        method: 'post',
+        url: 'http://192.168.18.130:5000/api/login',
+        data: {
+          email: email,
+          password: password,
+          deviceType: Platform.OS,
+        },
+      }).then(function (response) {
+        auth()
+          .signInWithEmailAndPassword(email, password)
+          .then(user => {
+            const userRef = database().ref(`users/${user?.user?.uid}`);
+            console.log('dataArray = ==', userRef);
+            userRef.once('value', snapshot => {
+              const data = {
+                email: snapshot.child('email').val(),
+                name: snapshot.child('name').val(),
+                profileImage: snapshot.child('profileImage').val(),
+                uid: snapshot.child('uid').val(),
+              };
+              dispatch(setUserData(data));
+              setIsLoading(false);
+              navigation.navigate('Home');
+              setEmail('');
+              setPassword('');
+            });
+          })
+          .catch(error => {
+            if (error.code === 'auth/invalid-email') {
+              setError('Email address is invalid!');
+            }
+
+            if (error.code === 'auth/user-not-found') {
+              setError('Wrong Email');
+            }
+
+            if (error.code === 'auth/wrong-password') {
+              setError('Wrong Password!');
+            }
+
             setIsLoading(false);
-            navigation.navigate('Home');
-            setEmail('');
-            setPassword('');
           });
-        })
-        .catch(error => {
-          if (error.code === 'auth/invalid-email') {
-            setError('Email address is invalid!');
-          }
-
-          if (error.code === 'auth/user-not-found') {
-            setError('Wrong Email');
-          }
-
-          if (error.code === 'auth/wrong-password') {
-            setError('Wrong Password!');
-          }
-
-          setIsLoading(false);
-        });
+        console.log(response.data);
+      });
     }
   };
 

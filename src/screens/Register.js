@@ -63,6 +63,7 @@ const Register = ({navigation}) => {
 
     if (valid) {
       setIsLoading(true);
+
       axios({
         method: 'POST',
         url: 'http://192.168.18.130:5000/api/signup',
