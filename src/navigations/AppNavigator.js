@@ -6,12 +6,11 @@ import {useSelector} from 'react-redux';
 import Contacts from '../screens/Contacts';
 import ForgotPassword from '../screens/ForgotPassword';
 import Home from '../screens/Home';
-import Login from '../screens/Login';
 import Profile from '../screens/Profile';
 import Register from '../screens/Register';
 import SignleChat from '../screens/SignleChat';
-import Splash from '../screens/Splash';
 import UserData from '../screens/UserData';
+import {Login, Splash} from '../screens';
 
 const Stack = createNativeStackNavigator();
 
