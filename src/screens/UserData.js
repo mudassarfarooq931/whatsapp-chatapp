@@ -1,21 +1,31 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React, {useEffect, useState} from 'react';
-
+import axios from 'axios';
 const UserData = () => {
   const [apiData, setApiData] = useState('');
 
-  const getApi = async () => {
-    const apiUrl = 'https://jsonplaceholder.typicode.com/posts/1';
-    let result = await fetch(apiUrl);
-    result = result.json();
-    setApiData(result);
-    console.log('Api call ======================> ', result);
+  //   const fetchApiData = async () => {
+  //     const url = 'https://jsonplaceholder.typicode.com/posts/1';
+  //     let result = await fetch(url);
+  //     result = await result.json();
+
+  //     setApiData(result);
+  //     console.log('userData ========= >', result);
+  //   };
+
+  const getDataFromApi = () => {
+    const localUrl = 'http://192.168.18.130:5000/api/l';
+    const headers = {};
+    axios.get('', {headers: 'Auth'}).then(res => {
+      setApiData(res.data);
+      console.log('response ======= ', res.data);
+    });
   };
 
   useEffect(() => {
-    getApi();
+    // fetchApiData();
+    getDataFromApi();
   }, []);
-
   return (
     <View style={styles.container}>
       <View style={styles.userDataView}>
@@ -33,13 +43,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'gray',
+    backgroundColor: 'pink',
   },
   userDataView: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: 'gray',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
 });
 

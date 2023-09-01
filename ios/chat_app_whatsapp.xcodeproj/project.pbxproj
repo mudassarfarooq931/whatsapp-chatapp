@@ -30,7 +30,7 @@
 		522DE8182A97C4C200AF3B92 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522DE8052A97C4C200AF3B92 /* SimpleLineIcons.ttf */; };
 		522DE8192A97C4C200AF3B92 /* FontAwesome6_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522DE8062A97C4C200AF3B92 /* FontAwesome6_Brands.ttf */; };
 		522DE81A2A97C4C200AF3B92 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 522DE8072A97C4C200AF3B92 /* MaterialIcons.ttf */; };
-		5231378C2A966E6E00C3FA7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5231378B2A966E6D00C3FA7A /* GoogleService-Info.plist */; };
+		52E686962AA201CB00BD38BA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52E686952AA201CB00BD38BA /* GoogleService-Info.plist */; };
 		6B8E40CEA8311BC2BE96E418 /* Pods_chat_app_whatsapp_chat_app_whatsappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D0FD8271C6AB3313776F4E /* Pods_chat_app_whatsapp_chat_app_whatsappTests.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AA29D69B6D1BBBE06D767864 /* Pods_chat_app_whatsapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAB62A36B02C8A2895092F96 /* Pods_chat_app_whatsapp.framework */; };
@@ -77,7 +77,7 @@
 		522DE8052A97C4C200AF3B92 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		522DE8062A97C4C200AF3B92 /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
 		522DE8072A97C4C200AF3B92 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
-		5231378B2A966E6D00C3FA7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		52E686952AA201CB00BD38BA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-chat_app_whatsapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat_app_whatsapp.release.xcconfig"; path = "Target Support Files/Pods-chat_app_whatsapp/Pods-chat_app_whatsapp.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-chat_app_whatsapp-chat_app_whatsappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat_app_whatsapp-chat_app_whatsappTests.debug.xcconfig"; path = "Target Support Files/Pods-chat_app_whatsapp-chat_app_whatsappTests/Pods-chat_app_whatsapp-chat_app_whatsappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = chat_app_whatsapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,10 +126,10 @@
 		13B07FAE1A68108700A75B9A /* chat_app_whatsapp */ = {
 			isa = PBXGroup;
 			children = (
+				52E686952AA201CB00BD38BA /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				5231378B2A966E6D00C3FA7A /* GoogleService-Info.plist */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -331,9 +331,9 @@
 				522DE8102A97C4C200AF3B92 /* Foundation.ttf in Resources */,
 				522DE8132A97C4C200AF3B92 /* FontAwesome5_Regular.ttf in Resources */,
 				522DE80F2A97C4C200AF3B92 /* AntDesign.ttf in Resources */,
+				52E686962AA201CB00BD38BA /* GoogleService-Info.plist in Resources */,
 				522DE8182A97C4C200AF3B92 /* SimpleLineIcons.ttf in Resources */,
 				522DE8152A97C4C200AF3B92 /* Zocial.ttf in Resources */,
-				5231378C2A966E6E00C3FA7A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

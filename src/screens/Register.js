@@ -8,12 +8,14 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Image,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import CustomInputs from '../components/CustomInputs';
 import CustomButton from '../components/CustomButton';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
+import axios from 'axios';
 
 const Register = ({navigation}) => {
   const [name, setName] = useState('');
@@ -61,29 +63,45 @@ const Register = ({navigation}) => {
 
     if (valid) {
       setIsLoading(true);
+      axios({
+        method: 'POST',
+        url: 'http://192.168.18.130:5000/api/signup',
+        data: {
+          name: name,
+          email: email,
+          password: password,
+          deviceType: Platform.OS,
+        },
+      })
+        .then(function (response) {
+          auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then(user => {
+              registerUser(user);
 
-      auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(user => {
-          registerUser(user);
+              navigation.navigate('Login');
+              setName('');
+              setEmail('');
+              setPassword('');
+              setIsLoading(false);
+            })
+            .catch(error => {
+              if (error.code === 'auth/email-already-in-use') {
+                setError('That email address is already in use!');
+              }
 
-          navigation.navigate('Login');
-          setName('');
-          setEmail('');
-          setPassword('');
-          setIsLoading(false);
+              if (error.code === 'auth/invalid-email') {
+                setError('That email address is invalid!');
+              }
+
+              console.error(error);
+              setIsLoading(false);
+            });
+
+          console.log(response);
         })
-        .catch(error => {
-          if (error.code === 'auth/email-already-in-use') {
-            setError('That email address is already in use!');
-          }
-
-          if (error.code === 'auth/invalid-email') {
-            setError('That email address is invalid!');
-          }
-
-          console.error(error);
-          setIsLoading(false);
+        .catch(function (error) {
+          console.log(error);
         });
     }
   };

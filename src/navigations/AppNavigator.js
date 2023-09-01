@@ -76,7 +76,7 @@ const AppNavigator = () => {
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="Users"
+            name="UserData"
             component={UserData}
             options={{headerShown: false}}
           />
