@@ -11,6 +11,7 @@ import Profile from '../screens/Profile';
 import Register from '../screens/Register';
 import SignleChat from '../screens/SignleChat';
 import Splash from '../screens/Splash';
+import UserData from '../screens/UserData';
 
 const Stack = createNativeStackNavigator();
 
@@ -72,6 +73,11 @@ const AppNavigator = () => {
           <Stack.Screen
             name="ForgotPassword"
             component={ForgotPassword}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Users"
+            component={UserData}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
