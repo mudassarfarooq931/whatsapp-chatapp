@@ -10,10 +10,9 @@ import {
   Image,
 } from 'react-native';
 import React, {useState} from 'react';
-import CustomInputs from '../components/CustomInputs';
-import CustomButton from '../components/CustomButton';
+import CustomInputs from '../../../components/CustomInputs';
+import CustomButton from '../../../components/CustomButton';
 import auth from '@react-native-firebase/auth';
-import CustomStatusBar from '../components/CustomStatusBar';
 
 const ForgotPassword = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -55,13 +54,12 @@ const ForgotPassword = ({navigation}) => {
   };
   return (
     <KeyboardAvoidingView style={{flex: 1}}>
-      <CustomStatusBar />
       <ScrollView
         contentContainerStyle={{minHeight: '100%'}}
         style={styles.container}>
         <View style={styles.headerContainer}>
           <Image
-            source={require('../assets/images/unnamed.png')}
+            source={require('../../../assets/images/unnamed.png')}
             style={styles.logoImg}
           />
         </View>
