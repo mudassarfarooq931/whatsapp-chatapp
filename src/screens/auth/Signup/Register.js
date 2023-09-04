@@ -11,8 +11,8 @@ import {
   Platform,
 } from 'react-native';
 import React, {useState} from 'react';
-import CustomInputs from '../components/CustomInputs';
-import CustomButton from '../components/CustomButton';
+import CustomInputs from '../../../components/CustomInputs';
+import CustomButton from '../../..//components/CustomButton';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import axios from 'axios';
@@ -24,6 +24,31 @@ const Register = ({navigation}) => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const registerAuthentication = () => {
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        registerUser(user);
+        navigation.navigate('Login');
+        setName('');
+        setEmail('');
+        setPassword('');
+        setIsLoading(false);
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          setError('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          setError('That email address is invalid!');
+        }
+
+        console.error(error);
+        setIsLoading(false);
+      });
+  };
+
   const registerUser = user => {
     const usersRef = database().ref(`users/${user?.user?.uid}`);
     usersRef
@@ -33,7 +58,25 @@ const Register = ({navigation}) => {
         uid: user?.user?.uid,
         profileImage: 'https://cdn-icons-png.flaticon.com/512/9187/9187604.png',
       })
-      .then(() => console.log('Data set.'));
+      .then(() => {
+        RegisterWithApi(user);
+        console.log('Data set.');
+      });
+  };
+
+  const RegisterWithApi = async user => {
+    let res = await axios({
+      method: 'POST',
+      url: 'http://192.168.18.130:5000/api/signup',
+      data: {
+        firebase_uid: user?.user?.uid,
+        name: name,
+        email: email,
+        password: password,
+        deviceType: Platform.OS,
+      },
+    });
+    console.log('res...api..', res);
   };
 
   const handleRegister = () => {
@@ -63,47 +106,47 @@ const Register = ({navigation}) => {
 
     if (valid) {
       setIsLoading(true);
+      registerAuthentication();
+      // auth()
+      //   .createUserWithEmailAndPassword(email, password)
+      //   .then(user => {
+      //     registerUser(user);
+      //     navigation.navigate('Login');
+      //     setName('');
+      //     setEmail('');
+      //     setPassword('');
+      //     setIsLoading(false);
+      //   })
+      //   .catch(error => {
+      //     if (error.code === 'auth/email-already-in-use') {
+      //       setError('That email address is already in use!');
+      //     }
 
-      axios({
-        method: 'POST',
-        url: 'http://192.168.18.130:5000/api/signup',
-        data: {
-          name: name,
-          email: email,
-          password: password,
-          deviceType: Platform.OS,
-        },
-      })
-        .then(function (response) {
-          auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then(user => {
-              registerUser(user);
+      //     if (error.code === 'auth/invalid-email') {
+      //       setError('That email address is invalid!');
+      //     }
 
-              navigation.navigate('Login');
-              setName('');
-              setEmail('');
-              setPassword('');
-              setIsLoading(false);
-            })
-            .catch(error => {
-              if (error.code === 'auth/email-already-in-use') {
-                setError('That email address is already in use!');
-              }
+      //   console.error(error);
+      //   setIsLoading(false);
+      // })
+      // .then(function (response) {
+      // axios({
+      //   method: 'POST',
+      //   url: 'http://192.168.18.130:5000/api/signup',
+      //   data: {
+      //     firebase_uid: user?.user?.uid,
+      //     name: name,
+      //     email: email,
+      //     password: password,
+      //     deviceType: Platform.OS,
+      //   },
+      // });
 
-              if (error.code === 'auth/invalid-email') {
-                setError('That email address is invalid!');
-              }
-
-              console.error(error);
-              setIsLoading(false);
-            });
-
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      // console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
     }
   };
 
@@ -115,7 +158,7 @@ const Register = ({navigation}) => {
         style={styles.container}>
         <View style={styles.headerContainer}>
           <Image
-            source={require('../assets/images/unnamed.png')}
+            source={require('../../../assets/images/unnamed.png')}
             style={styles.logoImg}
           />
         </View>

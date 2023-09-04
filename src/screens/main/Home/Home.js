@@ -3,10 +3,9 @@ import {View} from 'react-native';
 
 import {CommonActions} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-import CustomHeader from '../components/CustomHeader';
-import CustomStatusBar from '../components/CustomStatusBar';
-import TopTabNavigator from '../navigations/TopTabNavigator';
-import {setUserData} from '../redux/slices/auth/auth-slice';
+import CustomHeader from '../../../components/CustomHeader';
+import TopTabNavigator from '../../../navigations/TopTabNavigator';
+import {setUserData} from '../../../redux/slices/auth/auth-slice';
 
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
@@ -23,7 +22,6 @@ const Home = ({navigation}) => {
 
   return (
     <View style={{flex: 1}}>
-      <CustomStatusBar />
       <CustomHeader onPressDots={gotoLogout} />
       <TopTabNavigator />
     </View>

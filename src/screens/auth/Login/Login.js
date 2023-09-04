@@ -21,10 +21,24 @@ import axios from 'axios';
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('Abc1234@');
+  const [password, setPassword] = useState('Admin123*');
   const [error, setError] = useState('');
   // const [passwordError, setPasswordError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const LoginWithApi = async user => {
+    let res = await axios({
+      method: 'post',
+      url: 'http://192.168.18.130:5000/api/login',
+      data: {
+        email: email,
+        password: password,
+        deviceType: Platform.OS,
+        firebase_uid: user?.user?.uid,
+      },
+    });
+    console.log('api res...', JSON.stringify(res, null, 2));
+  };
 
   const handleLogin = () => {
     const baseUrl = 'http://192.168.18.130:5000/api';
@@ -39,51 +53,54 @@ const Login = ({navigation}) => {
 
     if (valid) {
       setIsLoading(true);
-      axios({
-        method: 'post',
-        url: 'http://192.168.18.130:5000/api/login',
-        data: {
-          email: email,
-          password: password,
-          deviceType: Platform.OS,
-        },
-      }).then(function (response) {
-        auth()
-          .signInWithEmailAndPassword(email, password)
-          .then(user => {
-            const userRef = database().ref(`users/${user?.user?.uid}`);
-            console.log('dataArray = ==', userRef);
-            userRef.once('value', snapshot => {
-              const data = {
-                email: snapshot.child('email').val(),
-                name: snapshot.child('name').val(),
-                profileImage: snapshot.child('profileImage').val(),
-                uid: snapshot.child('uid').val(),
-              };
-              dispatch(setUserData(data));
-              setIsLoading(false);
-              navigation.navigate('Home');
-              setEmail('');
-              setPassword('');
-            });
-          })
-          .catch(error => {
-            if (error.code === 'auth/invalid-email') {
-              setError('Email address is invalid!');
-            }
 
-            if (error.code === 'auth/user-not-found') {
-              setError('Wrong Email');
-            }
-
-            if (error.code === 'auth/wrong-password') {
-              setError('Wrong Password!');
-            }
-
+      // axios({
+      //   method: 'post',
+      //   url: 'http://192.168.18.130:5000/api/login',
+      //   data: {
+      //     email: email,
+      //     password: password,
+      //     deviceType: Platform.OS,
+      //   },
+      // }).then(function (response) {
+      auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(user => {
+          LoginWithApi(user);
+          const userRef = database().ref(`users/${user?.user?.uid}`);
+          console.log('dataArray = ==', userRef);
+          userRef.once('value', snapshot => {
+            const data = {
+              email: snapshot.child('email').val(),
+              name: snapshot.child('name').val(),
+              profileImage: snapshot.child('profileImage').val(),
+              uid: snapshot.child('uid').val(),
+            };
+            dispatch(setUserData(data));
             setIsLoading(false);
+            navigation.navigate('Home');
+            setEmail('');
+            setPassword('');
           });
-        console.log(response.data);
-      });
+        })
+        .catch(error => {
+          if (error.code === 'auth/invalid-email') {
+            setError('Email address is invalid!');
+          }
+
+          if (error.code === 'auth/user-not-found') {
+            setError('Wrong Email');
+          }
+
+          if (error.code === 'auth/wrong-password') {
+            setError('Wrong Password!');
+          }
+
+          setIsLoading(false);
+        });
+
+      // console.log(response.data);
+      // });
     }
   };
 

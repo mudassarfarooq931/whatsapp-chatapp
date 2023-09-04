@@ -4,13 +4,12 @@ import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native';
 import {useSelector} from 'react-redux';
 import Contacts from '../screens/Contacts';
-import ForgotPassword from '../screens/ForgotPassword';
-import Home from '../screens/Home';
+// import ForgotPassword from '../screens/auth/ForgotPassword/ForgotPassword';
+// import Home from '../screens/main/Home/Home';
 import Profile from '../screens/Profile';
-import Register from '../screens/Register';
 import SignleChat from '../screens/SignleChat';
 import UserData from '../screens/UserData';
-import {Login, Splash} from '../screens';
+import {ForgotPassword, Home, Login, Register, Splash} from '../screens';
 
 const Stack = createNativeStackNavigator();
 
