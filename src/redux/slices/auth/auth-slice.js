@@ -5,6 +5,7 @@ const initialState = {
   userName: '',
   userEmail: '',
   userProfile: '',
+  authToken: '',
 };
 
 export const authSlice = createSlice({
@@ -18,10 +19,14 @@ export const authSlice = createSlice({
       state.userEmail = userData.email;
       state.userProfile = userData.profileImage;
     },
+    setAuthToken: (state, action) => {
+      console.log(action.payload, 'action.payload');
+      state.authToken = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {setUserData} = authSlice.actions;
+export const {setUserData, setAuthToken} = authSlice.actions;
 
 export default authSlice.reducer;

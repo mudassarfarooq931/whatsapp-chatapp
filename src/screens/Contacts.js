@@ -15,24 +15,32 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import database from '@react-native-firebase/database';
 import {useSelector} from 'react-redux';
+import axios from 'axios';
+import {postRequestWithToken} from '../redux/api/api';
 
 export default function Contacts({navigation}) {
   const [contacts, setContacts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const {userId} = useSelector(state => state.auth);
+  const [loading, setLoading] = useState(false);
+  const {userId, authToken} = useSelector(state => state.auth);
+
+  const allUsersDataFromApi = async () => {
+    const response = await postRequestWithToken(authToken, userId);
+    setContacts(response);
+    console.log('api res...contacts..', JSON.stringify(response, null, 2));
+    setLoading(false);
+  };
 
   useEffect(() => {
     setLoading(true);
-    const contactsRef = database().ref('users');
-    contactsRef.once('value', snapshot => {
-      const data = snapshot.val();
-      const contactsArray = Object.values(data);
-      setContacts(contactsArray);
-      setLoading(false);
-    });
+    allUsersDataFromApi();
+    // const contactsRef = database().ref('users');
+    // contactsRef.once('value', snapshot => {
+    //   const data = snapshot.val();
+    //   const contactsArray = Object.values(data);
+    //   setContacts(contactsArray);
+    //   setLoading(false);
+    // });
   }, []);
-
-  // console.log(userId, 'wecfwe');
 
   return (
     <View style={styles.container}>
@@ -50,7 +58,7 @@ export default function Contacts({navigation}) {
             </Text>
             {!loading && (
               <Text style={{color: 'white'}}>
-                {contacts.length - 1} Contacts
+                {contacts?.length - 1} Contacts
               </Text>
             )}
           </TouchableOpacity>
@@ -114,6 +122,7 @@ export default function Contacts({navigation}) {
           );
         }}
       />
+
       {loading && (
         <View
           style={{

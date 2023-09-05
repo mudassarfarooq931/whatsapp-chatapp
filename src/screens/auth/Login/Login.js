@@ -14,16 +14,14 @@ import CustomInputs from '../../../components/CustomInputs';
 import CustomButton from '../../../components/CustomButton';
 import auth from '@react-native-firebase/auth';
 import {useDispatch} from 'react-redux';
-// import {setUserData} from '../redux/slices/auth/auth-slice';
-import {setUserData} from '../../../redux/slices/auth/auth-slice';
+import {setAuthToken, setUserData} from '../../../redux/slices/auth/auth-slice';
 import axios from 'axios';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('Admin123*');
+  const [email, setEmail] = useState('farhan123@gmail.com');
+  const [password, setPassword] = useState('Abc1234@');
   const [error, setError] = useState('');
-  // const [passwordError, setPasswordError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const LoginWithApi = async user => {
@@ -37,11 +35,14 @@ const Login = ({navigation}) => {
         firebase_uid: user?.user?.uid,
       },
     });
-    console.log('api res...', JSON.stringify(res, null, 2));
+    if (res?.data?.message == 'User is logged in.') {
+      console.log('User is logged in...');
+      dispatch(setAuthToken(res?.data.token));
+    }
+    // console.log('api res...in login', JSON.stringify(res, null, 2));
   };
 
   const handleLogin = () => {
-    const baseUrl = 'http://192.168.18.130:5000/api';
     let valid = true;
 
     if (email === '' || password === '') {
@@ -54,21 +55,11 @@ const Login = ({navigation}) => {
     if (valid) {
       setIsLoading(true);
 
-      // axios({
-      //   method: 'post',
-      //   url: 'http://192.168.18.130:5000/api/login',
-      //   data: {
-      //     email: email,
-      //     password: password,
-      //     deviceType: Platform.OS,
-      //   },
-      // }).then(function (response) {
       auth()
         .signInWithEmailAndPassword(email, password)
         .then(user => {
           LoginWithApi(user);
           const userRef = database().ref(`users/${user?.user?.uid}`);
-          console.log('dataArray = ==', userRef);
           userRef.once('value', snapshot => {
             const data = {
               email: snapshot.child('email').val(),
@@ -98,9 +89,6 @@ const Login = ({navigation}) => {
 
           setIsLoading(false);
         });
-
-      // console.log(response.data);
-      // });
     }
   };
 
@@ -120,7 +108,7 @@ const Login = ({navigation}) => {
           <CustomInputs
             placeholder={'Email'}
             onChangeText={setEmail}
-            value={email}
+            value={email?.toLowerCase()}
             keyboardType={'default'}
             iconName={'mail'}
             inputType={'email'}

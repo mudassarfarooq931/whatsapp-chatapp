@@ -28,8 +28,8 @@ const AppNavigator = () => {
   }, []);
   return (
     <NavigationContainer>
-      <SafeAreaView backgroundColor={'#3C73E9'} style={{flex: 0}} />
-      <SafeAreaView backgroundColor={'white'} style={{flex: 1}}>
+      <SafeAreaView style={{flex: 0, backgroundColor: '#3C73E9'}} />
+      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
         <Stack.Navigator
           initialRouteName={userId && userId !== '' ? 'Home' : 'Login'}>
           <Stack.Screen

@@ -2,8 +2,8 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Chats from '../screens/Chats';
-import Status from '../screens/Status';
-import Calls from '../screens/Calls';
+
+import {Calls, Posts} from '../screens';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -15,24 +15,23 @@ const TopTabNavigator = () => {
       screenOptions={{
         tabBarLabelStyle: {fontSize: 16, color: '#fff', fontWeight: 'bold'},
         tabBarItemStyle: {},
-        tabBarStyle: {backgroundColor: '#3C73E9',marginBottom: 0,},
+        tabBarStyle: {backgroundColor: '#3C73E9', marginBottom: 0},
         // tabBarAndroidRipple: { borderless: true },
         tabBarPressColor: '#3C73E9',
-        
+
         swipeEnabled: true,
-        
       }}
       style={{height: 50}}>
       <Tab.Screen
-      style={{}}
+        style={{}}
         name="Chats"
         component={Chats}
         options={{tabBarLabel: 'Chats'}}
       />
       <Tab.Screen
-        name="Status"
-        component={Status}
-        options={{tabBarLabel: 'Status'}}
+        name="Posts"
+        component={Posts}
+        options={{tabBarLabel: 'Posts'}}
       />
       <Tab.Screen
         name="Calls"

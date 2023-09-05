@@ -20,7 +20,7 @@ import axios from 'axios';
 const Register = ({navigation}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('Abc1234@');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -54,7 +54,7 @@ const Register = ({navigation}) => {
     usersRef
       .set({
         name: name,
-        email: email,
+        email: email?.toLowerCase(),
         uid: user?.user?.uid,
         profileImage: 'https://cdn-icons-png.flaticon.com/512/9187/9187604.png',
       })
@@ -73,10 +73,11 @@ const Register = ({navigation}) => {
         name: name,
         email: email,
         password: password,
+        profileImage: 'https://cdn-icons-png.flaticon.com/512/9187/9187604.png',
         deviceType: Platform.OS,
       },
     });
-    console.log('res...api..', res);
+    console.log('res...api..', JSON.stringify(res, null, 2));
   };
 
   const handleRegister = () => {
@@ -176,7 +177,7 @@ const Register = ({navigation}) => {
           <CustomInputs
             placeholder={'Email'}
             onChangeText={setEmail}
-            value={email}
+            value={email?.toLowerCase()}
             keyboardType={'default'}
             iconName={'mail'}
             inputMode={'email'}

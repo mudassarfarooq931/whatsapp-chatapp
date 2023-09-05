@@ -12,9 +12,10 @@ import database from '@react-native-firebase/database';
 import {useDispatch, useSelector} from 'react-redux';
 import CustomFloatingActionbutton from '../components/CustomFloatingActionbutton';
 import {setInbox, setNewInbox} from '../redux/slices/chat/inbox-slice';
+import {postRequestWithToken} from '../redux/api/api';
 
 const Chats = ({navigation}) => {
-  const {userId} = useSelector(state => state.auth);
+  const {userId, authToken} = useSelector(state => state.auth);
   const {inboxes} = useSelector(state => state.inbox);
   const dispatch = useDispatch();
 
@@ -79,6 +80,10 @@ const Chats = ({navigation}) => {
     };
   }, []);
 
+  const onContactPress = () => {
+    navigation.navigate('Contacts');
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -114,9 +119,7 @@ const Chats = ({navigation}) => {
           </TouchableOpacity>
         )}
       />
-      <CustomFloatingActionbutton
-        onPress={() => navigation.navigate('Contacts')}
-      />
+      <CustomFloatingActionbutton onPress={onContactPress} />
     </View>
   );
 };
